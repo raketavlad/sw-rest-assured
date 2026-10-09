@@ -41,3 +41,6 @@ build/
 ### My ignore ###
 .idea
 .allure
+test-output/
+allure-results/
+allure-report/

@@ -1,10 +1,13 @@
 package org.example.api.models.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FilmsResponse {
     private String title;
     @JsonProperty("episode_id")
@@ -15,11 +18,11 @@ public class FilmsResponse {
     private String producer;
     @JsonProperty("release_date")
     private Instant releaseDate;
-    private ArrayList<String> characters;
-    private ArrayList<String> planets;
-    private ArrayList<String> starships;
-    private ArrayList<String> vehicles;
-    private ArrayList<String> species;
+    private List<String> characters;
+    private List<String> planets;
+    private List<String> starships;
+    private List<String> vehicles;
+    private List<String> species;
     private Instant created;
     private Instant edited;
     private String url;
@@ -72,15 +75,15 @@ public class FilmsResponse {
         this.releaseDate = releaseDate;
     }
 
-    public ArrayList<String> getCharacters() {
+    public List<String> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(ArrayList<String> characters) {
+    public void setCharacters(List<String> characters) {
         this.characters = characters;
     }
 
-    public ArrayList<String> getPlanets() {
+    public List<String> getPlanets() {
         return planets;
     }
 
@@ -88,27 +91,27 @@ public class FilmsResponse {
         this.planets = planets;
     }
 
-    public ArrayList<String> getStarships() {
+    public List<String> getStarships() {
         return starships;
     }
 
-    public void setStarships(ArrayList<String> starships) {
+    public void setStarships(List<String> starships) {
         this.starships = starships;
     }
 
-    public ArrayList<String> getVehicles() {
+    public List<String> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(ArrayList<String> vehicles) {
+    public void setVehicles(List<String> vehicles) {
         this.vehicles = vehicles;
     }
 
-    public ArrayList<String> getSpecies() {
+    public List<String> getSpecies() {
         return species;
     }
 
-    public void setSpecies(ArrayList<String> species) {
+    public void setSpecies(List<String> species) {
         this.species = species;
     }
 

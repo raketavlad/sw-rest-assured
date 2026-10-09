@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PeopleResponse {
@@ -24,10 +24,10 @@ public class PeopleResponse {
     private String birthYear;
     private String gender;
     private String homeworld;
-    private ArrayList<String> films;
-    private ArrayList<Object> species;
-    private ArrayList<String> vehicles;
-    private ArrayList<String> starships;
+    private List<String> films;
+    private List<String> species;
+    private List<String> vehicles;
+    private List<String> starships;
     private Instant created;
     private Instant edited;
     private String url;
@@ -104,35 +104,35 @@ public class PeopleResponse {
         this.homeworld = homeworld;
     }
 
-    public ArrayList<String> getFilms() {
+    public List<String> getFilms() {
         return films;
     }
 
-    public void setFilms(ArrayList<String> films) {
+    public void setFilms(List<String> films) {
         this.films = films;
     }
 
-    public ArrayList<Object> getSpecies() {
+    public List<String> getSpecies() {
         return species;
     }
 
-    public void setSpecies(ArrayList<Object> species) {
+    public void setSpecies(List<String> species) {
         this.species = species;
     }
 
-    public ArrayList<String> getVehicles() {
+    public List<String> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(ArrayList<String> vehicles) {
+    public void setVehicles(List<String> vehicles) {
         this.vehicles = vehicles;
     }
 
-    public ArrayList<String> getStarships() {
+    public List<String> getStarships() {
         return starships;
     }
 
-    public void setStarships(ArrayList<String> starships) {
+    public void setStarships(List<String> starships) {
         this.starships = starships;
     }
 

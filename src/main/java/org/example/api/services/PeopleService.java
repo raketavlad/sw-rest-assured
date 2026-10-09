@@ -1,17 +1,19 @@
 package org.example.api.services;
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.example.api.endpoints.Endpoints;
 import org.example.api.specifications.RequestSpec;
 import org.example.api.specifications.ResponseSpec;
+
+import static io.restassured.RestAssured.given;
 
 public class PeopleService {
 
     public Response getAllPerson() {
-        return RestAssured.given()
+        return given()
                 .spec(RequestSpec.getCommonRequestSpec()) // <--- Применяем спецификацию!
                 .when()
-                .get("/people")
+                .get(Endpoints.PEOPLE)
                 .then()
                 .spec(ResponseSpec.getSuccessResponseSpec()) // <--- Проверяем статус 200 и логируем ответ
                 .extract()
@@ -19,10 +21,11 @@ public class PeopleService {
     }
 
     public Response getPerson(int id) {
-        return RestAssured.given()
+        return given()
                 .spec(RequestSpec.getCommonRequestSpec()) // <--- Применяем спецификацию!
+                .pathParam("id", id)
                 .when()
-                .get("/people/" + id)
+                .get(Endpoints.PERSON_BY_ID)
                 .then()
                 .spec(ResponseSpec.getSuccessResponseSpec()) // <--- Проверяем статус 200 и логируем ответ
                 .extract()

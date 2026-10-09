@@ -24,7 +24,16 @@ public class ConfigProvider {
             throw new RuntimeException("Ошибка при загрузке конфигурации", e);
         }
 
-        BASE_URL = properties.getProperty("base.url");
+        BASE_URL = requireProperty("base.url", configFileName);
         TIMEOUT = Integer.parseInt(properties.getProperty("api.timeout", "5000"));
+    }
+
+    private static String requireProperty(String key, String configFileName) {
+        String value = properties.getProperty(key);
+        if (value == null || value.isBlank()) {
+            throw new IllegalStateException(
+                    "Обязательный параметр '" + key + "' не найден в " + configFileName);
+        }
+        return value;
     }
 }
