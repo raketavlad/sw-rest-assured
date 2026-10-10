@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -24,7 +25,7 @@ public class FilmsResponse {
     private String director;
     private String producer;
     @JsonProperty("release_date")
-    private Instant releaseDate;
+    private LocalDate releaseDate;
     private List<String> characters;
     private List<String> planets;
     private List<String> starships;
