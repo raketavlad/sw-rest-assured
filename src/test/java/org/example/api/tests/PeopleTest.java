@@ -1,9 +1,8 @@
 package org.example.api.tests;
 
-import io.restassured.http.ContentType;
-import org.example.api.config.ConfigProvider;
 import org.example.api.endpoints.Endpoints;
 import org.example.api.models.response.PeopleResponse;
+import org.example.api.specifications.RequestSpec;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -19,25 +18,21 @@ public class PeopleTest extends BaseTest {
 
     @Test(description = "Проверка общего количества персонажей")
     public void checkAllPersonCount() {
-        List<PeopleResponse> people = peopleService.getAllPerson()
-                .body().jsonPath().getList("", PeopleResponse.class);
+        List<PeopleResponse> people = peopleService.getAllPerson();
         Assert.assertEquals(people.size(), EXPECTED_PEOPLE_COUNT);
-
     }
 
     @Test
     public void checkPersonName() {
-        PeopleResponse person = peopleService.getPerson(1).as(PeopleResponse.class);
+        PeopleResponse person = peopleService.getPerson(1);
         Assert.assertEquals(person.getName(), "Luke Skywalker");
-        System.out.println(person.getCreated());
     }
 
     @Test(description = "Запрос персонажа по отсутствующему id",
-    dataProvider = "testInvalidId")
+            dataProvider = "invalidIds")
     public void checkPersonInvalidId(int id) {
         given()
-                .contentType(ContentType.JSON)
-                .baseUri(ConfigProvider.BASE_URL)
+                .spec(RequestSpec.getCommonRequestSpec())
                 .pathParam("id", id)
                 .when()
                 .get(Endpoints.PERSON_BY_ID)
@@ -45,8 +40,8 @@ public class PeopleTest extends BaseTest {
                 .statusCode(404);
     }
 
-    @DataProvider(name = "testInvalidId")
-    public Object[][] getId() {
+    @DataProvider(name = "invalidIds")
+    public Object[][] invalidIds() {
         return new Object[][]{
                 {0},
                 {84},

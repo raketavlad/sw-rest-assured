@@ -1,26 +1,27 @@
 package org.example.api.services;
 
-import io.restassured.response.Response;
 import org.example.api.endpoints.Endpoints;
+import org.example.api.models.response.PeopleResponse;
 import org.example.api.specifications.RequestSpec;
 import org.example.api.specifications.ResponseSpec;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
 public class PeopleService {
 
-    public Response getAllPerson() {
+    public List<PeopleResponse> getAllPerson() {
         return given()
                 .spec(RequestSpec.getCommonRequestSpec()) // <--- Применяем спецификацию!
                 .when()
                 .get(Endpoints.PEOPLE)
                 .then()
                 .spec(ResponseSpec.getSuccessResponseSpec()) // <--- Проверяем статус 200 и логируем ответ
-                .extract()
-                .response();
+                .extract().jsonPath().getList("", PeopleResponse.class);
     }
 
-    public Response getPerson(int id) {
+    public PeopleResponse getPerson(int id) {
         return given()
                 .spec(RequestSpec.getCommonRequestSpec()) // <--- Применяем спецификацию!
                 .pathParam("id", id)
@@ -28,7 +29,6 @@ public class PeopleService {
                 .get(Endpoints.PERSON_BY_ID)
                 .then()
                 .spec(ResponseSpec.getSuccessResponseSpec()) // <--- Проверяем статус 200 и логируем ответ
-                .extract()
-                .response();
+                .extract().as(PeopleResponse.class);
     }
 }
