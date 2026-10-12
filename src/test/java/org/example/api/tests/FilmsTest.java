@@ -27,7 +27,7 @@ public class FilmsTest extends BaseTest {
 
     @Test(description = "Запрос фильма по отсутствующему id",
             dataProvider = "invalidIds")
-    public void checkPersonInvalidId(int id) {
+    public void checkFilmInvalidId(int id) {
         given()
                 .spec(RequestSpec.getCommonRequestSpec())
                 .pathParam("id", id)
