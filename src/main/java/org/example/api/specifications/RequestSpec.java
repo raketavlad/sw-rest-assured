@@ -17,8 +17,6 @@ public class RequestSpec {
                 .setContentType(ContentType.JSON)
                 .setAccept(ContentType.JSON)
 //                .log(LogDetail.ALL) // Выводит весь лог запроса (нужно для дебага)
-                // Главная интеграция с Allure: фильтр перехватывает запрос
-                // и прикрепляет его красивым вложением (Attachment) в отчет
                 .addFilter(new AllureRestAssured())
                 .build();
     }
