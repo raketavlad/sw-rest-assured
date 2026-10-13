@@ -18,13 +18,13 @@ public class PeopleTest extends BaseTest {
 
     @Test(description = "Проверка общего количества персонажей")
     public void checkAllPersonCount() {
-        List<PeopleResponse> people = peopleService.getAllPerson();
+        List<PeopleResponse> people = peopleService.getAll();
         Assert.assertEquals(people.size(), EXPECTED_PEOPLE_COUNT);
     }
 
     @Test
     public void checkPersonName() {
-        PeopleResponse person = peopleService.getPerson(1);
+        PeopleResponse person = peopleService.getById(1);
         Assert.assertEquals(person.getName(), "Luke Skywalker");
     }
 

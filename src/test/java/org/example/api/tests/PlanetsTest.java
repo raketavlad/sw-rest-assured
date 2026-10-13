@@ -15,13 +15,13 @@ public class PlanetsTest extends BaseTest {
 
     @Test(description = "Проверка общего количества планет")
     public void checkAllPlanetsCount() {
-        List<PlanetsResponse> planets = planetsService.getAllPlanets();
+        List<PlanetsResponse> planets = planetsService.getAll();
         Assert.assertEquals(planets.size(), 60);
     }
 
     @Test(description = "Проверка названия планеты")
     public void checkPlanetName() {
-        PlanetsResponse planet = planetsService.getPlanet(1);
+        PlanetsResponse planet = planetsService.getById(1);
         Assert.assertEquals(planet.getName(), "Tatooine");
     }
 

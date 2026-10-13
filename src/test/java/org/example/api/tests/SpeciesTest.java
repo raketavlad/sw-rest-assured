@@ -15,13 +15,13 @@ public class SpeciesTest extends BaseTest {
 
     @Test(description = "Проверка общего количества видов")
     public void checkAllSpeciesCount() {
-        List<SpeciesResponse> species = speciesService.getAllSpecies();
+        List<SpeciesResponse> species = speciesService.getAll();
         Assert.assertEquals(species.size(), 37);
     }
 
     @Test(description = "Проверка названия вида")
     public void checkSpeciesName() {
-        SpeciesResponse species = speciesService.getSpecies(1);
+        SpeciesResponse species = speciesService.getById(1);
         Assert.assertEquals(species.getName(), "Human");
     }
 

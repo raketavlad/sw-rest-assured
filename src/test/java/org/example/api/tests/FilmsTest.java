@@ -15,13 +15,13 @@ public class FilmsTest extends BaseTest {
 
     @Test(description = "Проверка общего количества фильмов")
     public void checkAllFilmsCount() {
-        List<FilmsResponse> people = filmsService.getAllFilms();
+        List<FilmsResponse> people = filmsService.getAll();
         Assert.assertEquals(people.size(), 6);
     }
 
     @Test(description = "Проверка названия фильма")
     public void checkFilmTitle() {
-        FilmsResponse film = filmsService.getFilm(1);
+        FilmsResponse film = filmsService.getById(1);
         Assert.assertEquals(film.getTitle(), "A New Hope");
     }
 

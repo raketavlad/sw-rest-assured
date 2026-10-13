@@ -15,13 +15,13 @@ public class VehiclesTest extends BaseTest {
 
     @Test(description = "Проверка общего количества транспортных средств")
     public void checkAllStarshipsCount() {
-        List<VehiclesResponse> vehicles = vehiclesService.getAllVehicles();
+        List<VehiclesResponse> vehicles = vehiclesService.getAll();
         Assert.assertEquals(vehicles.size(), 39);
     }
 
     @Test(description = "Проверка названия транспортного средства")
     public void checkStarshipName() {
-        VehiclesResponse vehicle = vehiclesService.getVehicle(4);
+        VehiclesResponse vehicle = vehiclesService.getById(4);
         Assert.assertEquals(vehicle.getName(), "Sand Crawler");
     }
 
