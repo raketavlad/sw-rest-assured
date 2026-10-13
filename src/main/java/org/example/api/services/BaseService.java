@@ -19,22 +19,32 @@ public abstract class BaseService<T> {
 
     public List<T> getAll() {
         return given()
-                .spec(RequestSpec.getCommonRequestSpec()) // <--- Применяем спецификацию!
+                .spec(RequestSpec.getCommonRequestSpec())
                 .when()
                 .get(resourcePath)
                 .then()
-                .spec(ResponseSpec.getSuccessResponseSpec()) // <--- Проверяем статус 200 и логируем ответ
+                .spec(ResponseSpec.getSuccessResponseSpec())
                 .extract().jsonPath().getList("", type);
     }
 
     public T getById(int id) {
         return given()
-                .spec(RequestSpec.getCommonRequestSpec()) // <--- Применяем спецификацию!
+                .spec(RequestSpec.getCommonRequestSpec())
                 .pathParam("id", id)
                 .when()
                 .get(resourcePath + "/{id}")
                 .then()
-                .spec(ResponseSpec.getSuccessResponseSpec()) // <--- Проверяем статус 200 и логируем ответ
+                .spec(ResponseSpec.getSuccessResponseSpec())
                 .extract().as(type);
+    }
+
+    public void getByInvalidId(int id) {
+        given()
+                .spec(RequestSpec.getCommonRequestSpec())
+                .pathParam("id", id)
+                .when()
+                .get(resourcePath + "/{id}")
+                .then()
+                .spec(ResponseSpec.getNotFoundResponseSpec());
     }
 }

@@ -1,15 +1,11 @@
 package org.example.api.tests;
 
-import org.example.api.endpoints.Endpoints;
 import org.example.api.models.response.FilmsResponse;
-import org.example.api.specifications.RequestSpec;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
-
-import static io.restassured.RestAssured.given;
 
 public class FilmsTest extends BaseTest {
 
@@ -28,13 +24,7 @@ public class FilmsTest extends BaseTest {
     @Test(description = "Запрос фильма по отсутствующему id",
             dataProvider = "invalidIds")
     public void checkFilmInvalidId(int id) {
-        given()
-                .spec(RequestSpec.getCommonRequestSpec())
-                .pathParam("id", id)
-                .when()
-                .get(Endpoints.FILM_BY_ID)
-                .then()
-                .statusCode(404);
+        filmsService.getByInvalidId(id);
     }
 
     @DataProvider(name = "invalidIds")

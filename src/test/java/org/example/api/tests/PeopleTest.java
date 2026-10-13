@@ -1,15 +1,11 @@
 package org.example.api.tests;
 
-import org.example.api.endpoints.Endpoints;
 import org.example.api.models.response.PeopleResponse;
-import org.example.api.specifications.RequestSpec;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
-
-import static io.restassured.RestAssured.given;
 
 public class PeopleTest extends BaseTest {
 
@@ -31,13 +27,7 @@ public class PeopleTest extends BaseTest {
     @Test(description = "Запрос персонажа по отсутствующему id",
             dataProvider = "invalidIds")
     public void checkPersonInvalidId(int id) {
-        given()
-                .spec(RequestSpec.getCommonRequestSpec())
-                .pathParam("id", id)
-                .when()
-                .get(Endpoints.PERSON_BY_ID)
-                .then()
-                .statusCode(404);
+        peopleService.getByInvalidId(id);
     }
 
     @DataProvider(name = "invalidIds")

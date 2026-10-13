@@ -28,13 +28,7 @@ public class StarshipsTest extends BaseTest {
     @Test(description = "Запрос звездолёта по отсутствующему id",
             dataProvider = "invalidIds")
     public void checkStarshipsInvalidId(int id) {
-        given()
-                .spec(RequestSpec.getCommonRequestSpec())
-                .pathParam("id", id)
-                .when()
-                .get(Endpoints.STARSHIP_BY_ID)
-                .then()
-                .statusCode(404);
+        starshipsService.getByInvalidId(id);
     }
 
     @DataProvider(name = "invalidIds")
