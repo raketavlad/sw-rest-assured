@@ -1,6 +1,7 @@
 package org.example.api.tests;
 
 import org.example.api.models.response.PlanetsResponse;
+import org.example.api.specifications.ResponseSpec;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,7 +25,7 @@ public class PlanetsTest extends BaseTest {
     @Test(description = "Запрос планеты по отсутствующему id",
             dataProvider = "invalidIds")
     public void checkPlanetsInvalidId(int id) {
-        planetsService.getByInvalidId(id);
+        planetsService.getByIdRaw(id).spec(ResponseSpec.getNotFoundResponseSpec());
     }
 
     @DataProvider(name = "invalidIds")

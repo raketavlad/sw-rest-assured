@@ -1,15 +1,12 @@
 package org.example.api.tests;
 
-import org.example.api.endpoints.Endpoints;
 import org.example.api.models.response.StarshipsResponse;
-import org.example.api.specifications.RequestSpec;
+import org.example.api.specifications.ResponseSpec;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
-
-import static io.restassured.RestAssured.given;
 
 public class StarshipsTest extends BaseTest {
 
@@ -28,7 +25,7 @@ public class StarshipsTest extends BaseTest {
     @Test(description = "Запрос звездолёта по отсутствующему id",
             dataProvider = "invalidIds")
     public void checkStarshipsInvalidId(int id) {
-        starshipsService.getByInvalidId(id);
+        starshipsService.getByIdRaw(id).spec(ResponseSpec.getNotFoundResponseSpec());
     }
 
     @DataProvider(name = "invalidIds")

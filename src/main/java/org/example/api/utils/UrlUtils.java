@@ -8,14 +8,21 @@ public final class UrlUtils {
         if (url == null || url.isBlank()) {
             throw new IllegalArgumentException("URL не должна быть пустой");
         }
-        int idx = url.lastIndexOf('/');
-        if (idx < 0 || idx == url.length() - 1) {
+
+        String clean = url.split("[?#]")[0];
+
+        if (clean.endsWith("/")) {
+            clean = clean.substring(9, clean.length() - 1);
+        }
+
+        int idx = clean.lastIndexOf('/');
+        if (idx < 0 || idx == clean.length() - 1) {
             throw new IllegalArgumentException("Нельзя достать id из : " + url);
         }
         try {
-            return Integer.parseInt(url.substring(idx + 1));
+            return Integer.parseInt(clean.substring(idx + 1));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Last segment is not a number: " + url, e);
+            throw new IllegalArgumentException("Последний сегмент не число: " + url, e);
         }
     }
 }

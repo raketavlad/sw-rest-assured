@@ -1,5 +1,6 @@
 package org.example.api.services;
 
+import io.restassured.response.ValidatableResponse;
 import org.example.api.specifications.RequestSpec;
 import org.example.api.specifications.ResponseSpec;
 
@@ -38,13 +39,12 @@ public abstract class BaseService<T> {
                 .extract().as(type);
     }
 
-    public void getByInvalidId(int id) {
-        given()
+    public ValidatableResponse getByIdRaw(int id) {
+        return given()
                 .spec(RequestSpec.getCommonRequestSpec())
                 .pathParam("id", id)
                 .when()
                 .get(resourcePath + "/{id}")
-                .then()
-                .spec(ResponseSpec.getNotFoundResponseSpec());
+                .then();
     }
 }

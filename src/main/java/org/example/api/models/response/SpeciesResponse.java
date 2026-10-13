@@ -16,23 +16,24 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SpeciesResponse {
-    public String name;
-    public String classification;
-    public String designation;
-    public String average_height;
+    private String name;
+    private String classification;
+    private String designation;
+    @JsonProperty("average_height")
+    private String averageHeight;
     @JsonProperty("skin_colors")
-    public String skinColors;
+    private String skinColors;
     @JsonProperty("hair_colors")
-    public String hairColors;
+    private String hairColors;
     @JsonProperty("eye_colors")
-    public String eyeColors;
+    private String eyeColors;
     @JsonProperty("average_lifespan")
-    public String averageLifespan;
-    public Object homeworld;
-    public String language;
-    public List<String> people;
-    public List<String> films;
-    public Instant created;
-    public Instant edited;
-    public String url;
+    private String averageLifespan;
+    private String homeworld;
+    private String language;
+    private List<String> people;
+    private List<String> films;
+    private Instant created;
+    private Instant edited;
+    private String url;
 }

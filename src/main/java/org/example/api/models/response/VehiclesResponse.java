@@ -16,24 +16,24 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class VehiclesResponse {
-    public String name;
-    public String model;
-    public String manufacturer;
+    private String name;
+    private String model;
+    private String manufacturer;
     @JsonProperty("cost_in_credits")
-    public String costInCredits;
-    public String length;
+    private String costInCredits;
+    private String length;
     @JsonProperty("max_atmosphering_speed")
-    public String maxAtmospheringSpeed;
-    public String crew;
-    public String passengers;
+    private String maxAtmospheringSpeed;
+    private String crew;
+    private String passengers;
     @JsonProperty("cargo_capacity")
-    public String cargoCapacity;
-    public String consumables;
+    private String cargoCapacity;
+    private String consumables;
     @JsonProperty("vehicle_class")
-    public String vehicleClass;
-    public List<Object> pilots;
-    public List<String> films;
-    public Instant created;
-    public Instant edited;
-    public String url;
+    private String vehicleClass;
+    private List<String> pilots;
+    private List<String> films;
+    private Instant created;
+    private Instant edited;
+    private String url;
 }

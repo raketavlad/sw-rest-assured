@@ -1,6 +1,7 @@
 package org.example.api.tests;
 
 import org.example.api.models.response.SpeciesResponse;
+import org.example.api.specifications.ResponseSpec;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,7 +25,7 @@ public class SpeciesTest extends BaseTest {
     @Test(description = "Запрос вида по отсутствующему id",
             dataProvider = "invalidIds")
     public void checkSpeciesInvalidId(int id) {
-        speciesService.getByInvalidId(id);
+        speciesService.getByIdRaw(id).spec(ResponseSpec.getNotFoundResponseSpec());
     }
 
     @DataProvider(name = "invalidIds")

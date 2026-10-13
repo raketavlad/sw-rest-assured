@@ -16,21 +16,21 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlanetsResponse {
-    public String name;
+    private String name;
     @JsonProperty("rotation_period")
-    public String rotationPeriod;
+    private String rotationPeriod;
     @JsonProperty("orbital_period")
-    public String orbitalPeriod;
-    public String diameter;
-    public String climate;
-    public String gravity;
-    public String terrain;
+    private String orbitalPeriod;
+    private String diameter;
+    private String climate;
+    private String gravity;
+    private String terrain;
     @JsonProperty("surface_water")
-    public String surfaceWater;
-    public String population;
-    public List<String> residents;
-    public List<String> films;
-    public Instant created;
-    public Instant edited;
-    public String url;
+    private String surfaceWater;
+    private String population;
+    private List<String> residents;
+    private List<String> films;
+    private Instant created;
+    private Instant edited;
+    private String url;
 }

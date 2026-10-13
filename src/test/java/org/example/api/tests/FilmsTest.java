@@ -1,6 +1,7 @@
 package org.example.api.tests;
 
 import org.example.api.models.response.FilmsResponse;
+import org.example.api.specifications.ResponseSpec;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,7 +25,7 @@ public class FilmsTest extends BaseTest {
     @Test(description = "Запрос фильма по отсутствующему id",
             dataProvider = "invalidIds")
     public void checkFilmInvalidId(int id) {
-        filmsService.getByInvalidId(id);
+        filmsService.getByIdRaw(id).spec(ResponseSpec.getNotFoundResponseSpec());
     }
 
     @DataProvider(name = "invalidIds")

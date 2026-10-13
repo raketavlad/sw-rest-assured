@@ -16,28 +16,29 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StarshipsResponse {
-    public String name;
-    public String model;
-    public String manufacturer;
-    public String cost_in_credits;
-    public String length;
+    private String name;
+    private String model;
+    private String manufacturer;
+    @JsonProperty("cost_in_credits")
+    private String costInCredits;
+    private String length;
     @JsonProperty("max_atmosphering_speed")
-    public String maxAtmospheringSpeed;
-    public String crew;
-    public String passengers;
+    private String maxAtmospheringSpeed;
+    private String crew;
+    private String passengers;
     @JsonProperty("cargo_capacity")
-    public String cargoCapacity;
-    public String consumables;
+    private String cargoCapacity;
+    private String consumables;
     @JsonProperty("hyperdrive_rating")
-    public String hyperdriveRating;
+    private String hyperdriveRating;
     @JsonProperty("MGLT")
-    public String mGLT;
+    private String mGLT;
     @JsonProperty("starship_class")
-    public String starshipClass;
-    public List<Object> pilots;
-    public List<String> films;
-    public Instant created;
-    public Instant edited;
-    public String url;
+    private String starshipClass;
+    private List<String> pilots;
+    private List<String> films;
+    private Instant created;
+    private Instant edited;
+    private String url;
 }
 

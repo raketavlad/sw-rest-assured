@@ -1,6 +1,7 @@
 package org.example.api.tests;
 
 import org.example.api.models.response.PeopleResponse;
+import org.example.api.specifications.ResponseSpec;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -27,7 +28,7 @@ public class PeopleTest extends BaseTest {
     @Test(description = "Запрос персонажа по отсутствующему id",
             dataProvider = "invalidIds")
     public void checkPersonInvalidId(int id) {
-        peopleService.getByInvalidId(id);
+        peopleService.getByIdRaw(id).spec(ResponseSpec.getNotFoundResponseSpec());
     }
 
     @DataProvider(name = "invalidIds")
