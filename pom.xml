@@ -138,8 +138,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version> <!-- Используйте актуальную версию -->
-            <scope>provided</scope>    <!-- означает что нужен только на этапе компиляции -->
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Logging -->
